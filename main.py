@@ -5,6 +5,8 @@ from colorama import Back, Fore, Style, init
 from game.api import Api
 from game.board_handler import BoardHandler
 from game.bot_handler import BotHandler
+from game.logic.crawler import Crawler
+from game.logic.nazarick import NazarickNPC
 from game.logic.random import RandomLogic
 from game.util import *
 from game.logic.base import BaseLogic
@@ -15,6 +17,7 @@ DEFAULT_BOARD_ID = 1
 CONTROLLERS = {
     "Random": RandomLogic,
     "Crawler": Crawler,
+    "Nazarick": NazarickNPC,
 }
 
 ###############################################################################
