@@ -4,8 +4,8 @@
 
 Diamonds is a programming challenge. Program a bot and compete to get the highest score. For more information:
 
--   [Project Specification](https://docs.google.com/document/d/13cbmMVXviyu8eKQ6heqgDzt4JNNMeAZO/edit)
--   [Get Started with Diamonds](https://docs.google.com/document/d/1L92Axb89yIkom0b24D350Z1QAr8rujvHof7-kXRAp7c/edit)
+- [Project Specification](https://docs.google.com/document/d/13cbmMVXviyu8eKQ6heqgDzt4JNNMeAZO/edit)
+- [Get Started with Diamonds](https://docs.google.com/document/d/1L92Axb89yIkom0b24D350Z1QAr8rujvHof7-kXRAp7c/edit)
 
 ## Installing Dependencies 🔨
 
@@ -27,7 +27,7 @@ Diamonds is a programming challenge. Program a bot and compete to get the highes
 1. To run one bot
 
     ```
-    python main.py --logic Random --email=your_email@example.com --name=your_name --password=your_password --team etimo
+    python main.py --logic Nazarick --email=your_email@example.com --name=your_name --password=your_password --team etimo
     ```
 
 2. To run multiple bots simultaneously
@@ -50,15 +50,15 @@ Diamonds is a programming challenge. Program a bot and compete to get the highes
     chmod +x run-bots.sh
     ```
 
-#### Note:
+#### Note
 
--   If you run multiple bots, make sure each emails and names are unique
--   The email could be anything as long as it follows a correct email syntax
--   The name, and password could be anything without any space
+- If you run multiple bots, make sure each emails and names are unique
+- The email could be anything as long as it follows a correct email syntax
+- The name, and password could be anything without any space
 
 ## Credits 🪙
 
-This repository is adapted from https://github.com/Etimo/diamonds2
+This repository is adapted from <https://github.com/Etimo/diamonds2>
 
 Some code in this repository is adjusted to fix some issues in the original repository and to adapt to the requirements of Algorithm Strategies course (IF2211), Informatics Undergraduate Program, ITB.
 
