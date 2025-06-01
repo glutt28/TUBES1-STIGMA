@@ -14,6 +14,7 @@ BASE_URL = "http://localhost:3000/api"
 DEFAULT_BOARD_ID = 1
 CONTROLLERS = {
     "Random": RandomLogic,
+    "Crawler": Crawler,
 }
 
 ###############################################################################
