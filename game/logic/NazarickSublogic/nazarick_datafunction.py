@@ -2,50 +2,35 @@ from typing import List, Optional, Tuple, Dict, Any
 from game import models
 
 
-# calculating manhattan distacle
-# if ya dont know about what "manhattan" is, it is mean how many step needed horizontaly and verticaly, yeah smtg like tht
 def howManyStepNeeded(pos1: models.Position, pos2: models.Position) -> int:
     return abs(pos1.x - pos2.x) + abs(pos1.y - pos2.y)
 
 
-# i just dont like underscore, make my code look messy
-# btw if it a dict or other data structure, i would like to add it in name, to explicitly tell what it return
-def getPositionAsDict(position_obj: models.Position) -> Dict[str, int]:
-    return {"x": position_obj.x, "y": position_obj.y}
+def getPositionAsDict(positionObj: models.Position) -> Dict[str, int]:
+    return {"x": positionObj.x, "y": positionObj.y}
 
 
-# to get the diamond position and point
-# def getDiamondDataAsDict(diamond_obj: models.GameObject) -> Dict[str, Any]:
-#    points = 0
-#    if diamond_obj.properties and diamond_obj.properties.points is not None:
-#        points = diamond_obj.properties.points
-#
-#    return {"position": getPositionAsDict(diamond_obj.position), "points": points}
-
-
-# to get the all properties
 def getPropertiesAsDict(
-    props_obj: Optional[models.Properties],
+    propsObj: Optional[models.Properties],
 ) -> Optional[Dict[str, Any]]:
-    if not props_obj:
+    if not propsObj:
         return None
-    base_dict = getPositionAsDict(props_obj.base) if props_obj.base else None
+    baseAsDict = getPositionAsDict(propsObj.base) if propsObj.base else None
     return {
-        "points": props_obj.points,
-        "pair_id": props_obj.pair_id,
-        "diamonds": props_obj.diamonds,
-        "score": props_obj.score,
-        "name": props_obj.name,
-        "inventory_size": props_obj.inventory_size,
-        "can_tackle": props_obj.can_tackle,
-        "milliseconds_left": props_obj.milliseconds_left,
-        "time_joined": props_obj.time_joined,
-        "base": base_dict,
+        "points": propsObj.points,
+        "pair_id": propsObj.pair_id,
+        "diamonds": propsObj.diamonds,
+        "score": propsObj.score,
+        "name": propsObj.name,
+        "inventory_size": propsObj.inventory_size,
+        "can_tackle": propsObj.can_tackle,
+        "milliseconds_left": propsObj.milliseconds_left,
+        "time_joined": propsObj.time_joined,
+        "base": baseAsDict,
     }
 
 
 def getGameObjectAsDict(gameObj: models.GameObject) -> Dict[str, Any]:
-    """Mengubah objek GameObject menjadi dictionary data yang relevan."""
     return {
         "id": gameObj.id,
         "position": getPositionAsDict(gameObj.position),
@@ -54,7 +39,6 @@ def getGameObjectAsDict(gameObj: models.GameObject) -> Dict[str, Any]:
     }
 
 
-# to get the diamond position and point
 def getDiamondDataAsDict(diamondObj: models.GameObject) -> Dict[str, Any]:
     points = 0
     if diamondObj.properties and diamondObj.properties.points is not None:
@@ -68,9 +52,6 @@ def getTeleporterDataAsDict(teleporterObj: models.GameObject) -> Dict[str, Any]:
 
 def getDiamondButtonDataAsDict(buttonObj: models.GameObject) -> Dict[str, Any]:
     return getGameObjectAsDict(buttonObj)
-
-
-# --- Logic Core ---
 
 
 def calculateDiamondDensity(
@@ -99,6 +80,9 @@ def determineTargetAndExitTeleporters(
         allTeleporterObjects,
         key=lambda tpObj: howManyStepNeeded(currentPos, tpObj.position),
     )
+
+    if not sortedTeleporters:
+        return None, None, float("inf")
 
     targetTeleporterObj = sortedTeleporters[0]
     distanceToTargetTeleporter = howManyStepNeeded(
